@@ -5,9 +5,7 @@ import React, {
 } from 'react'
 import s from './SuperCheckbox.module.css'
 
-// тип пропсов обычного инпута
-type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement>
+type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 type SuperCheckboxPropsType = Omit<DefaultInputPropsType, 'type'> & {
     onChangeChecked?: (checked: boolean) => void
@@ -20,22 +18,18 @@ const SuperCheckbox: React.FC<SuperCheckboxPropsType> = (
         onChangeChecked,
         className,
         spanClassName,
-        children, // в эту переменную попадёт текст, типизировать не нужно так как он затипизирован в React.FC
+        children,
         id,
 
-        ...restProps // все остальные пропсы попадут в объект restProps
+        ...restProps
     }
 ) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         if (onChangeChecked) {
             onChangeChecked(!restProps.checked)
-        }else if (onChange) {
+        } else if (onChange) {
             onChange(e)
         }
-        // // задачка на написание онченджа
-
-        /*onChange && onChange(e)
-        onChangeChecked && onChangeChecked(e.currentTarget.checked)*/
     }
 
     const finalInputClassName = s.checkbox
@@ -48,17 +42,14 @@ const SuperCheckbox: React.FC<SuperCheckboxPropsType> = (
                 type={'checkbox'}
                 onChange={onChangeCallback}
                 className={finalInputClassName}
-                {...restProps} // отдаём инпуту остальные пропсы если они есть (checked например там внутри)
+                {...restProps}
             />
             {children && (
-                <span
-                    id={id ? id + '-span' : undefined}
-                    className={s.spanClassName}
-                >
+                <span id={id ? id + '-span' : undefined} className={s.spanClassName}>
                     {children}
                 </span>
             )}
-        </label> // благодаря label нажатие на спан передастся в инпут
+        </label>
     )
 }
 

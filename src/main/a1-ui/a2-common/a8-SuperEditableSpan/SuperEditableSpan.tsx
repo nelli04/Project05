@@ -5,21 +5,17 @@ import React, {
     useState,
 } from 'react'
 import s from './SuperEditableSpan.module.css'
-import SuperInput from '../SuperInput/SuperInput'
-// import SuperInputText from '../../../hw04/common/c1-SuperInputText/SuperInput'
+import SuperInput from '../a3-SuperInput/SuperInput'
 import editIcon from './editIcon.svg'
 
-type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement>
-type DefaultSpanPropsType = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>,
-    HTMLSpanElement>
+type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+type DefaultSpanPropsType = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>
 
 type SuperEditableSpanType = Omit<DefaultInputPropsType, 'type'> & {
     onChangeText?: (value: string) => void
     onEnter?: () => void
     error?: string
-
-    spanProps?: DefaultSpanPropsType  & {defaultText?: string}// пропсы для спана
+    spanProps?: DefaultSpanPropsType & { defaultText?: string }
 }
 
 const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
@@ -28,7 +24,6 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
         onBlur,
         onEnter,
         spanProps,
-
         ...restProps
     }
 ) => {
@@ -38,7 +33,7 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
 
     const onEnterCallback = () => {
         setEditMode(!editMode)
-        onEnter?.( )
+        onEnter?.()
 
     }
     const onBlurCallback = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -52,8 +47,7 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
         onDoubleClick?.(e)
     }
 
-    const spanClassName = s.span
-        + (className ? ' ' + className : '')
+    const spanClassName = s.span + (className ? ' ' + className : '')
 
     return (
         <>
@@ -72,11 +66,7 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
                         className={s.pen}
                         alt={'edit'}
                     />
-                    <span
-                        onDoubleClick={onDoubleClickCallBack}
-                        className={spanClassName}
-                        {...restSpanProps}
-                    >
+                    <span onDoubleClick={onDoubleClickCallBack} className={spanClassName}{...restSpanProps}>
                         {children || restProps.value || defaultText}
                     </span>
                 </div>
