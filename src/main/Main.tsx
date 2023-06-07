@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import SuperButton from "./a1-ui/a2-common/a1-SuperButton/SuperButton";
 import SuperCheckbox from "./a1-ui/a2-common/a2-SuperCheckbox/SuperCheckbox";
 import SuperInput from "./a1-ui/a2-common/a3-SuperInput/SuperInput";
@@ -9,7 +9,7 @@ import SuperSort from "./a1-ui/a2-common/a5-SuperSort/SuperSort";
 import SuperDebouncedInput from "./a1-ui/a2-common/a9-SuperDebouncedInput/SuperDebouncedInput";
 import SuperPagination from "./a1-ui/a2-common/a10-SuperPagination/SuperPagination";
 import SuperRange from "./a1-ui/a2-common/a7-SuperRange/SuperRange";
-import style from './Main.module.css'
+import style from "./Main.module.css"
 
 export const Main = () => {
 
