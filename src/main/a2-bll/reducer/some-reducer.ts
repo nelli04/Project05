@@ -1,8 +1,8 @@
 
-const initialState = []
-
-export const someReducer = () => {
-    switch ('') {
+export const someReducer = (state: any, action: any) => {
+    switch (action.type) {
+        default:
+            return {...state}
     }
 }
 
